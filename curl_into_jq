@@ -1,8 +1,8 @@
 curl -H "Authorization: Basic base64here=" \
---data-urlencode some_attrib1="value" \
---data-urlencode filter="one.two.three.four = ''
-  and otherone.othertwo='true'" \
+    --data-urlencode some_attrib1="value" \
+    --data-urlencode filter="one.two.three.four = '' and otherone.othertwo='true'" \
 https://some.domain.com/version/endpoint |
-jq '.results[] |
-select(.one.two.three[].four) |
-{"thirdone": .thirdone, "three": .one.two.three[].four, "othertwo": .otherone[0].othertwo}'
+  jq '.results[] |
+    select(.one.two.three[].four) |
+    {"thirdone": .thirdone, "three": .one.two.three[].four, 
+    "othertwo": .otherone[0].othertwo}'
